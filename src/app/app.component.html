@@ -1,0 +1,34 @@
+<h1>{{customer.name}}</h1>
+<p> {{customer.name}} is in the {{customer.address.region}} region. </p>
+<br/>
+<fieldset>
+    <label>Name: </label> <input [value]="customer.name" (keyup.enter)="name=$event.target.value" (blur)="name=$event.target.value"><br/>
+    <label>City: </label> <input [(ngModel)]="customer.address.city"> <br/>
+    <label>Region: </label> <input [(ngModel)]="customer.address.region"> <br/>
+</fieldset>
+
+<button (click)="addressClick()">show/hide address</button>
+<label><input type="checkbox" [(ngModel)]="hideaddress">Hide Address</label>
+<div [hidden]="hideaddress">
+    <fieldset> <label> {{customer.address.street}} </label> </fieldset>
+    <fieldset> <label> {{customer.address.city}} </label> </fieldset>
+    <fieldset>
+        <br/>
+        <label>Region: </label>
+        <select [(ngModel)]="customer.address.region">
+            <option *ngFor="let region of regions">{{region}}</option>
+      </select>
+    </fieldset>
+</div>
+<fieldset>
+    <img [src]="image" />
+</fieldset>
+<label style.color={{color}}>
+    Favourite Color: 
+  </label>
+<button (click)="clicked()">Toggle Color</button>
+<select (change)="colorChange($event.target.value)">
+  <option>red</option>
+  <option>blue</option>
+  <option>green</option>
+  </select>
